@@ -1,10 +1,6 @@
 import { defineManifest } from '@crxjs/vite-plugin';
 import { version } from '../package.json';
 
-// NOTE: do not include src/ in paths,
-// vite root folder: src, public folder: public (based on the project root)
-// @see ../vite.config.ts#L16
-
 const manifest = defineManifest(async (env) => ({
   manifest_version: 3,
   name: `${env.mode === 'development' ? '[Dev] ' : ''}Browser Extension TypeScript & React Starter`,
@@ -26,10 +22,7 @@ const manifest = defineManifest(async (env) => ({
   },
   web_accessible_resources: [
     {
-      resources: [
-        // this file is web accessible; it supports HMR b/c it's declared in `rollupOptions.input`
-        'welcome/welcome.html',
-      ],
+      resources: ['vendor/*', 'app/*', 'content/*'],
       matches: ['<all_urls>'],
     },
   ],

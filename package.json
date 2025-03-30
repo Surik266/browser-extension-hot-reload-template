@@ -7,7 +7,7 @@
     "dev": "run-s clean && vite",
     "build": "run-s clean && tsc && vite build && run-s firefox-mv2-build",
     "firefox-mv2-build": "node tools/unstable_mv3ToMv2Build.js",
-    "clean": "run-p clean:*",
+    "clean": "run-s clean:dist && run-s clean:dist-firefox-v2",
     "clean:dist": "rimraf dist",
     "clean:dist-firefox-v2": "rimraf dist-firefox-v2",
     "format": "run-p format:*",
